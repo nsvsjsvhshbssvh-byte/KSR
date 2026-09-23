@@ -12,10 +12,11 @@
             font-family: Tahoma, sans-serif;
         }
 
+        /* خلفية خطوط سوداء وخضراء تتحرك */
         body {
             background-color: #000000;
-            background-image: linear-gradient(0deg, transparent 24%, rgba(34, 197, 94, 0.1) 25%, rgba(34, 197, 94, 0.1) 26%, transparent 27%, transparent 74%, rgba(34, 197, 94, 0.1) 75%, rgba(34, 197, 94, 0.1) 76%, transparent 77%, transparent),
-                              linear-gradient(90deg, transparent 24%, rgba(34, 197, 94, 0.1) 25%, rgba(34, 197, 94, 0.1) 26%, transparent 27%, transparent 74%, rgba(34, 197, 94, 0.1) 75%, rgba(34, 197, 94, 0.1) 76%, transparent 77%, transparent);
+            background-image: linear-gradient(0deg, transparent 24%, rgba(34, 197, 94, 0.08) 25%, rgba(34, 197, 94, 0.08) 26%, transparent 27%, transparent 74%, rgba(34, 197, 94, 0.08) 75%, rgba(34, 197, 94, 0.08) 76%, transparent 77%, transparent),
+                              linear-gradient(90deg, transparent 24%, rgba(34, 197, 94, 0.08) 25%, rgba(34, 197, 94, 0.08) 26%, transparent 27%, transparent 74%, rgba(34, 197, 94, 0.08) 75%, rgba(34, 197, 94, 0.08) 76%, transparent 77%, transparent);
             background-size: 50px 50px;
             animation: moveLines 4s linear infinite;
             color: #ffffff;
@@ -29,6 +30,7 @@
             100% { background-position: 50px 50px; }
         }
 
+        /* شاشة البداية */
         #splash-screen {
             position: fixed;
             top: 0;
@@ -56,6 +58,7 @@
             to { opacity: 0; visibility: hidden; }
         }
 
+        /* رأس الصفحة والشعار */
         header {
             display: flex;
             justify-content: space-between;
@@ -65,20 +68,16 @@
             border: 1px solid rgba(34, 197, 94, 0.3);
             border-radius: 12px;
             margin-bottom: 25px;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         .logo {
-            font-size: 24px;
+            font-size: 22px;
             font-weight: bold;
             color: #22c55e;
             letter-spacing: 2px;
-        }
-
-        .welcome-text {
-            font-size: 18px;
-            color: #4ade80;
-            margin-bottom: 20px;
-            font-weight: bold;
         }
 
         .main-container {
@@ -86,57 +85,92 @@
             margin: 0 auto;
         }
 
+        /* بطاقة التصميم الرئيسية */
         .card {
-            background: rgba(10, 25, 15, 0.9);
-            border: 1px solid rgba(34, 197, 94, 0.3);
-            border-radius: 16px;
+            background: rgba(10, 25, 15, 0.85);
+            border: 1px solid rgba(34, 197, 94, 0.25);
+            border-radius: 20px;
             padding: 25px;
             margin-bottom: 20px;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.7);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
         }
 
         .image-container {
-            width: 120px;
-            height: 120px;
-            margin: 0 auto 15px auto;
-            border-radius: 20px;
-            background: #051208;
-            border: 2px solid #22c55e;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            width: 100%;
+            max-height: 200px;
+            margin-bottom: 20px;
+            border-radius: 15px;
             overflow: hidden;
+            border: 1px solid rgba(34, 197, 94, 0.4);
         }
 
         .image-container img {
             width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        h2 {
-            font-size: 20px;
-            margin-bottom: 10px;
-            color: #ffffff;
-        }
-
-        p {
-            font-size: 14px;
-            color: #94a3b8;
-            line-height: 1.6;
-        }
-
-        .btn-download {
+            height: auto;
             display: block;
+        }
+
+        .section-title {
+            font-size: 20px;
+            color: #38bdf8;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+
+        /* قائمة المميزات */
+        .features-list {
+            list-style: none;
+            margin-bottom: 25px;
+            text-align: right;
+            padding: 0 10px;
+        }
+
+        .features-list li {
+            font-size: 15px;
+            color: #cbd5e1;
+            margin-bottom: 12px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            padding-bottom: 8px;
+        }
+
+        .features-list li::after {
+            content: "✦";
+            color: #a855f7;
+            font-size: 14px;
+        }
+
+        /* حالة يعمل */
+        .status-badge {
+            display: inline-block;
+            border: 1px solid #22c55e;
+            color: #22c55e;
+            padding: 8px 30px;
+            border-radius: 30px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            background: rgba(34, 197, 94, 0.1);
+        }
+
+        /* أزرار التحميل البنفسجية المطابقة للتصميم */
+        .btn-download {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
             width: 100%;
-            padding: 14px;
-            margin-top: 15px;
-            background: linear-gradient(135deg, #16a34a, #22c55e);
+            padding: 15px;
+            margin-bottom: 15px;
+            background: linear-gradient(135deg, #7c3aed, #9333ea);
             color: white;
             text-decoration: none;
-            border-radius: 10px;
+            border-radius: 15px;
             font-weight: bold;
-            box-shadow: 0 4px 15px rgba(34, 197, 94, 0.4);
+            font-size: 16px;
+            box-shadow: 0 4px 15px rgba(124, 58, 237, 0.4);
+            border: 1px solid rgba(168, 85, 247, 0.5);
             transition: 0.3s;
         }
 
@@ -166,60 +200,80 @@
 </head>
 <body>
 
+    <!-- شاشة البداية بالشعار -->
     <div id="splash-screen">
         <h1>KSR</h1>
     </div>
 
+    <!-- الشريط العلوي -->
+    <header>
+        <div class="logo">KSR</div>
+        <div>📱</div>
+    </header>
+
     <div class="main-container">
-        <header>
-            <div class="logo">KSR</div>
-            <div>📱</div>
-        </header>
-
-        <div class="welcome-text">
-            حياك الله في هكات : KSR
-        </div>
-
+        
+        <!-- البطاقة الأساسية -->
         <div class="card">
+            <!-- صورة دلتا المرفقة -->
             <div class="image-container">
-                <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" id="ninjaImg" alt="Delta">
+                <img src="https://i.ibb.co/3m12345/delta.png" alt="Delta Executor" id="deltaImg">
             </div>
-            <h2>تحميل هاك دلتا للايفون</h2>
-            <p>قم بتثبيت التطبيق مباشرة بكل سهولة واستمتع بالخصائص المتقدمة.</p>
+
+            <div class="section-title">مميزات هاك دلتا</div>
+
+            <!-- قائمة المميزات -->
+            <ul class="features-list">
+                <li>من اقوى الهاكات حمايةً</li>
+                <li>سهولة الحصول على المفتاح</li>
+                <li>يمكنك بحث السكريبتات فيه</li>
+            </ul>
+
+            <!-- زر يعمل -->
+            <div>
+                <span class="status-badge">يعمل ✓</span>
+            </div>
+
+            <!-- أزرار التحميل -->
+            <a href="itms-services://?action=download-manifest&url=https://delta.bz/manifest.plist" class="btn-download">
+                Delta Install 📥
+            </a>
             
             <a href="itms-services://?action=download-manifest&url=https://delta.bz/manifest.plist" class="btn-download">
-                تحميل
+                Delta Install 📥
             </a>
         </div>
 
+        <!-- سيرفر الديسكورد في أخر شيء -->
         <div class="card">
-            <h2>تطبيقات آمنة وموثوقة</h2>
-            <p>نسخ خالية من المشاكل ومجهزة بعناية لتجربة سلسة ومستقرة.</p>
-        </div>
-
-        <div class="card">
-            <h2>سيرفر الديسكورد</h2>
-            <p>انضم إلينا للمزيد من التحديثات والأدوات الحصرية.</p>
+            <h2 style="font-size: 18px; margin-bottom: 8px; color: #ffffff;">سيرفر الديسكورد</h2>
+            <p style="font-size: 13px; color: #94a3b8; margin-bottom: 10px;">انضم إلينا للمزيد من التحديثات والأدوات الحصرية.</p>
             <a href="https://discord.gg/4nn9R3SSF" target="_blank" class="discord-link">https://discord.gg/4nn9R3SSF</a>
         </div>
 
+        <!-- حقوق النشر -->
         <footer>
             جميع الحقوق محفوظة © KSR 2026
         </footer>
     </div>
 
     <script>
-        // ربط الصورة بشكل صحيح لتفادي المشاكل
+        // سكريبت تلقائي لضمان ظهور الصورة بالشكل الصحيح برمجياً إذا لزم الأمر
         const canvas = document.createElement('canvas');
-        canvas.width = 150; canvas.height = 150;
+        canvas.width = 400; canvas.height = 220;
         const ctx = canvas.getContext('2d');
-        ctx.fillStyle = '#111';
-        ctx.fillRect(0, 0, 150, 150);
+        ctx.fillStyle = '#0a190f';
+        ctx.fillRect(0, 0, 400, 220);
         ctx.fillStyle = '#22c55e';
-        ctx.font = 'bold 20px Tahoma';
+        ctx.font = 'bold 24px Tahoma';
         ctx.textAlign = 'center';
-        ctx.fillText('DELTA', 75, 80);
-        document.getElementById('ninjaImg').src = canvas.toDataURL();
+        ctx.fillText('Delta Executor', 200, 110);
+        
+        // استخدام صورة بديلة تلقائية في حال لم يوضع رابط مباشر للصورة
+        const img = document.getElementById('deltaImg');
+        img.onerror = function() {
+            this.src = canvas.toDataURL();
+        };
     </script>
 </body>
 </html>
