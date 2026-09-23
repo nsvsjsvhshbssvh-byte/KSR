@@ -12,24 +12,23 @@
             font-family: Tahoma, sans-serif;
         }
 
-        /* خلفية متحركة بالأسود والأخضر */
         body {
-            background: linear-gradient(135deg, #050b07, #022b12, #000000);
-            background-size: 400% 400%;
-            animation: gradientAnimation 10s ease infinite;
+            background-color: #000000;
+            background-image: linear-gradient(0deg, transparent 24%, rgba(34, 197, 94, 0.1) 25%, rgba(34, 197, 94, 0.1) 26%, transparent 27%, transparent 74%, rgba(34, 197, 94, 0.1) 75%, rgba(34, 197, 94, 0.1) 76%, transparent 77%, transparent),
+                              linear-gradient(90deg, transparent 24%, rgba(34, 197, 94, 0.1) 25%, rgba(34, 197, 94, 0.1) 26%, transparent 27%, transparent 74%, rgba(34, 197, 94, 0.1) 75%, rgba(34, 197, 94, 0.1) 76%, transparent 77%, transparent);
+            background-size: 50px 50px;
+            animation: moveLines 4s linear infinite;
             color: #ffffff;
             text-align: center;
             padding: 20px;
             overflow-x: hidden;
         }
 
-        @keyframes gradientAnimation {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
+        @keyframes moveLines {
+            0% { background-position: 0 0; }
+            100% { background-position: 50px 50px; }
         }
 
-        /* شاشة الترحيب بالشعار */
         #splash-screen {
             position: fixed;
             top: 0;
@@ -54,10 +53,7 @@
         }
 
         @keyframes fadeOut {
-            to {
-                opacity: 0;
-                visibility: hidden;
-            }
+            to { opacity: 0; visibility: hidden; }
         }
 
         header {
@@ -65,8 +61,8 @@
             justify-content: space-between;
             align-items: center;
             padding: 15px 25px;
-            background: rgba(5, 20, 10, 0.8);
-            border: 1px solid rgba(34, 197, 94, 0.2);
+            background: rgba(5, 20, 10, 0.9);
+            border: 1px solid rgba(34, 197, 94, 0.3);
             border-radius: 12px;
             margin-bottom: 25px;
         }
@@ -91,7 +87,7 @@
         }
 
         .card {
-            background: rgba(10, 25, 15, 0.85);
+            background: rgba(10, 25, 15, 0.9);
             border: 1px solid rgba(34, 197, 94, 0.3);
             border-radius: 16px;
             padding: 25px;
@@ -148,8 +144,21 @@
             opacity: 0.9;
         }
 
+        .discord-link {
+            display: block;
+            margin-top: 15px;
+            color: #4ade80;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 15px;
+        }
+
+        .discord-link:hover {
+            text-decoration: underline;
+        }
+
         footer {
-            margin-top: 40px;
+            margin-top: 30px;
             font-size: 12px;
             color: #64748b;
         }
@@ -157,49 +166,60 @@
 </head>
 <body>
 
-    <!-- شاشة البداية بالشعار -->
     <div id="splash-screen">
         <h1>KSR</h1>
     </div>
 
     <div class="main-container">
-        <!-- الشريط العلوي -->
         <header>
             <div class="logo">KSR</div>
             <div>📱</div>
         </header>
 
-        <!-- نص الترحيب -->
         <div class="welcome-text">
             حياك الله في هكات : KSR
         </div>
 
-        <!-- قسم هاك دلتا -->
         <div class="card">
             <div class="image-container">
-                <!-- صورة دلتا المطلوبة -->
-                <img src="https://i.ibb.co/3m12345/delta.png" alt="Delta Hacker" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'120\' height=\'120\'><rect width=\'100%\' height=\'100%\' fill=\'%23051208\'/><text x=\'50%\' y=\'50%\' fill=\'%2322c55e\' font-size=\'14\' text-anchor=\'middle\' dominant-baseline=\'middle\'>صورة دلتا</text></svg>'">
+                <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" id="ninjaImg" alt="Delta">
             </div>
             <h2>تحميل هاك دلتا للايفون</h2>
             <p>قم بتثبيت التطبيق مباشرة بكل سهولة واستمتع بالخصائص المتقدمة.</p>
             
-            <!-- زر التحميل بدون إيموجي -->
             <a href="itms-services://?action=download-manifest&url=https://delta.bz/manifest.plist" class="btn-download">
                 تحميل
             </a>
         </div>
 
-        <!-- قسم الموثوقية والأمان -->
         <div class="card">
             <h2>تطبيقات آمنة وموثوقة</h2>
             <p>نسخ خالية من المشاكل ومجهزة بعناية لتجربة سلسة ومستقرة.</p>
         </div>
 
-        <!-- حقوق النشر -->
+        <div class="card">
+            <h2>سيرفر الديسكورد</h2>
+            <p>انضم إلينا للمزيد من التحديثات والأدوات الحصرية.</p>
+            <a href="https://discord.gg/4nn9R3SSF" target="_blank" class="discord-link">https://discord.gg/4nn9R3SSF</a>
+        </div>
+
         <footer>
             جميع الحقوق محفوظة © KSR 2026
         </footer>
     </div>
 
+    <script>
+        // ربط الصورة بشكل صحيح لتفادي المشاكل
+        const canvas = document.createElement('canvas');
+        canvas.width = 150; canvas.height = 150;
+        const ctx = canvas.getContext('2d');
+        ctx.fillStyle = '#111';
+        ctx.fillRect(0, 0, 150, 150);
+        ctx.fillStyle = '#22c55e';
+        ctx.font = 'bold 20px Tahoma';
+        ctx.textAlign = 'center';
+        ctx.fillText('DELTA', 75, 80);
+        document.getElementById('ninjaImg').src = canvas.toDataURL();
+    </script>
 </body>
 </html>
