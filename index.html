@@ -3,148 +3,157 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>KSR | مركز التحميل الرسمي</title>
+    <title>KSR Store | منصة الأدوات والتحميل</title>
     <style>
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
-            font-family: Tahoma, sans-serif;
+            font-family: 'Segoe UI', Tahoma, sans-serif;
         }
 
         body {
-            background-color: #030704;
-            background-image: radial-gradient(circle at 50% 50%, #062410 0%, #010d05 70%);
-            background-size: 100% 100%;
-            color: #ffffff;
-            text-align: center;
-            padding: 20px;
-            overflow-x: hidden;
+            background: #090a0f;
+            background-image: radial-gradient(circle at top, #1a1c29 0%, #090a0f 100%);
+            color: #f8fafc;
             min-height: 100vh;
-        }
-
-        #splash-screen {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: #010d05;
+            padding: 20px;
             display: flex;
             flex-direction: column;
+            align-items: center;
+        }
+
+        /* شاشة ترحيبية أنيقة بدلاً من القديمة */
+        #loader {
+            position: fixed;
+            inset: 0;
+            background: #090a0f;
+            display: flex;
             justify-content: center;
             align-items: center;
             z-index: 9999;
-            animation: fadeOut 0.8s ease 1.5s forwards;
-            pointer-events: none;
+            transition: opacity 0.5s ease;
         }
 
-        #splash-screen h1 {
-            font-size: 40px;
-            color: #4ade80;
-            letter-spacing: 5px;
-            text-shadow: 0 0 25px rgba(74, 222, 128, 0.5);
+        .loader-brand {
+            font-size: 32px;
+            font-weight: 800;
+            background: linear-gradient(45deg, #38bdf8, #818cf8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: 2px;
         }
 
-        @keyframes fadeOut {
-            to { opacity: 0; visibility: hidden; }
+        .container {
+            width: 100%;
+            max-width: 420px;
+            margin-top: 10px;
         }
 
-        .top-nav {
+        /* نافذة الهيدر بتصميم مختلف تماماً */
+        .header-box {
+            background: rgba(25, 28, 42, 0.6);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 16px;
+            padding: 15px 20px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 12px 22px;
-            background: rgba(4, 18, 9, 0.95);
-            border: 1px solid rgba(74, 222, 128, 0.2);
-            border-radius: 14px;
-            margin-bottom: 25px;
-            max-width: 480px;
-            margin-left: auto;
-            margin-right: auto;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
-        }
-
-        .brand-logo {
-            font-size: 20px;
-            font-weight: bold;
-            color: #4ade80;
-            letter-spacing: 3px;
-        }
-
-        .wrapper {
-            max-width: 480px;
-            margin: 0 auto;
-        }
-
-        .panel-box {
-            background: rgba(6, 22, 12, 0.9);
-            border: 1px solid rgba(74, 222, 128, 0.2);
-            border-radius: 22px;
-            padding: 22px;
             margin-bottom: 20px;
-            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.7);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
         }
 
-        .media-holder {
+        .header-title {
+            font-weight: 700;
+            font-size: 18px;
+            color: #38bdf8;
+        }
+
+        /* البطاقة الرئيسية بهيكل جديد وحواف دائرية مختلفة */
+        .main-card {
+            background: rgba(18, 20, 32, 0.75);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(56, 189, 248, 0.15);
+            border-radius: 24px;
+            padding: 24px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+            margin-bottom: 20px;
+        }
+
+        .preview-img-box {
             width: 100%;
             border-radius: 14px;
             overflow: hidden;
-            border: 1px solid rgba(74, 222, 128, 0.3);
-            margin-bottom: 18px;
-            background: #020f06;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            margin-bottom: 20px;
+            background: #0f111a;
         }
 
-        .media-holder img {
+        .preview-img-box img {
             width: 100%;
             height: auto;
             display: block;
         }
 
-        .box-heading {
-            font-size: 19px;
-            color: #38bdf8;
-            margin-bottom: 15px;
-            font-weight: bold;
-        }
-
-        .info-list {
-            list-style: none;
-            margin-bottom: 22px;
-            text-align: right;
-            padding: 0 5px;
-        }
-
-        .info-list li {
-            font-size: 14px;
+        .section-heading {
+            font-size: 17px;
             color: #e2e8f0;
-            margin-bottom: 10px;
+            margin-bottom: 14px;
+            font-weight: 600;
+            text-align: right;
+        }
+
+        /* قائمة المميزات بتصميم شبكي وعلامات مميزة */
+        .features-grid {
+            list-style: none;
+            margin-bottom: 20px;
+        }
+
+        .features-grid li {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 10px 14px;
+            border-radius: 10px;
+            margin-bottom: 8px;
+            font-size: 14px;
+            color: #cbd5e1;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.04);
-            padding-bottom: 8px;
         }
 
-        .info-list li::after {
-            content: "◆";
+        .features-grid li span {
             color: #38bdf8;
-            font-size: 11px;
+            font-size: 12px;
         }
 
-        .state-indicator {
-            display: inline-block;
-            border: 1px solid #4ade80;
-            color: #4ade80;
-            padding: 6px 25px;
+        /* شارة الحالة بتصميم عصري صغير */
+        .status-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(16, 185, 129, 0.1);
+            border: 1px solid rgba(16, 185, 129, 0.3);
+            color: #34d399;
+            padding: 6px 16px;
             border-radius: 20px;
-            font-size: 14px;
-            font-weight: bold;
-            margin-bottom: 18px;
-            background: rgba(74, 222, 128, 0.08);
+            font-size: 13px;
+            font-weight: 600;
+            margin-bottom: 20px;
         }
 
-        .main-action-btn {
+        .status-pill::before {
+            content: '';
+            width: 7px;
+            height: 7px;
+            background: #34d399;
+            border-radius: 50%;
+            box-shadow: 0 0 8px #34d399;
+        }
+
+        /* أزرار التحميل بتدرجات لقمة الاحترافية */
+        .action-button {
             display: flex;
             justify-content: center;
             align-items: center;
@@ -152,84 +161,99 @@
             width: 100%;
             padding: 14px;
             margin-bottom: 12px;
-            background: linear-gradient(135deg, #6d28d9, #8b5cf6);
+            background: linear-gradient(135deg, #0284c7, #0369a1);
             color: white;
             text-decoration: none;
             border-radius: 12px;
-            font-weight: bold;
+            font-weight: 600;
             font-size: 15px;
-            box-shadow: 0 4px 15px rgba(109, 40, 217, 0.35);
-            border: 1px solid rgba(167, 139, 250, 0.4);
-            transition: 0.2s;
+            box-shadow: 0 4px 15px rgba(2, 132, 199, 0.3);
+            transition: transform 0.2s, opacity 0.2s;
+            border: none;
         }
 
-        .main-action-btn:active {
-            transform: scale(0.98);
+        .action-button.alt {
+            background: linear-gradient(135deg, #4f46e5, #4338ca);
+            box-shadow: 0 4px 15px rgba(79, 70, 229, 0.3);
         }
 
-        .community-url {
-            display: block;
-            margin-top: 12px;
-            color: #4ade80;
+        .action-button:active {
+            transform: scale(0.97);
+        }
+
+        .discord-box {
+            background: rgba(18, 20, 32, 0.75);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 18px;
+            padding: 16px;
+            text-align: center;
+        }
+
+        .discord-link {
+            display: inline-block;
+            margin-top: 8px;
+            color: #38bdf8;
             text-decoration: none;
-            font-weight: bold;
+            font-weight: 600;
             font-size: 14px;
         }
 
-        .community-url:hover {
+        .discord-link:hover {
             text-decoration: underline;
         }
 
         footer {
             margin-top: 25px;
-            font-size: 11px;
+            font-size: 12px;
             color: #64748b;
+            text-align: center;
         }
     </style>
 </head>
 <body>
 
-    <div id="splash-screen">
-        <h1>KSR</h1>
+    <div id="loader">
+        <div class="loader-brand">KSR Hub</div>
     </div>
 
-    <div class="top-nav">
-        <div class="brand-logo">KSR</div>
-        <div>🛡️</div>
-    </div>
-
-    <div class="wrapper">
+    <div class="container">
         
-        <div class="panel-box">
-            <div class="media-holder">
-                <img src="https://i.ibb.co/3m12345/delta.png" alt="Delta" id="customImg">
+        <div class="header-box">
+            <div class="header-title">KSR Dashboard</div>
+            <div style="font-size: 14px; color: #94a3b8;">v2.5</div>
+        </div>
+
+        <div class="main-card">
+            <div class="preview-img-box">
+                <img src="https://i.ibb.co/3m12345/delta.png" alt="Delta" id="toolImg">
             </div>
 
-            <div class="box-heading">مميزات هاك دلتا</div>
+            <div class="section-heading">مميزات النسخة</div>
 
-            <ul class="info-list">
-                <li>من اقوى الهاكات حمايةً</li>
-                <li>سهولة الحصول على المفتاح</li>
-                <li>يمكنك بحث السكريبتات فيه</li>
+            <ul class="features-grid">
+                <li>من اقوى الهاكات حمايةً <span>✦</span></li>
+                <li>سهولة الحصول على المفتاح <span>✦</span></li>
+                <li>يمكنك بحث السكريبتات فيه <span>✦</span></li>
             </ul>
 
             <div>
-                <span class="state-indicator">يعمل ✓</span>
+                <div class="status-pill">حالة الأداة: تعمل بكفاءة</div>
             </div>
 
-            <a href="itms-services://?action=download-manifest&url=https://delta.bz/manifest.plist" class="main-action-btn">
-                تحميل مباشر 📥
+            <a href="itms-services://?action=download-manifest&url=https://delta.bz/manifest.plist" class="action-button">
+        
+             (تحميل)
             </a>
             
-            <a href="itms-services://?action=download-manifest&url=https://delta.bz/manifest.plist" class="main-action-btn" style="background: linear-gradient(135deg, #5b21b6, #7c3aed);">
-                نسخة احتياطية 📥
+            <a href="itms-services://?action=download-manifest&url=https://delta.bz/manifest.plist" class="action-button alt">
+                تحميل احتياطي (بديل) 
             </a>
         </div>
 
-        <div class="panel-box">
-            <h2 style="font-size: 16px; margin-bottom: 6px; color: #ffffff;">سيرفر الديسكورد</h2>
-            <p style="font-size: 12px; color: #94a3b8; margin-bottom: 8px;">انضم إلينا للمزيد من التحديثات والأدوات الحصرية.</p>
-            <a href="https://discord.gg/4nn9R3SSF" target="_blank" class="community-url">https://discord.gg/4nn9R3SSF</a>
+        <div class="discord-box">
+            <h3 style="font-size: 15px; color: #f8fafc; margin-bottom: 4px;">مجتمع الديسكورد</h3>
+            <p style="font-size: 12px; color: #94a3b8;">تابع آخر التحديثات والأخبار أول بأول.</p>
+            <a href="https://discord.gg/4nn9R3SSF" target="_blank" class="discord-link">discord.gg/4nn9R3SSF</a>
         </div>
 
         <footer>
@@ -238,19 +262,26 @@
     </div>
 
     <script>
-        const canvas = document.createElement('canvas');
-        canvas.width = 400; canvas.height = 200;
-        const ctx = canvas.getContext('2d');
-        ctx.fillStyle = '#020f06';
+        // إخفاء شاشة التحميل بعد ثانية
+        setTimeout(() => {
+            const loader = document.getElementById('loader');
+            loader.style.opacity = '0';
+            setTimeout(() => loader.style.display = 'none', 500);
+        }, 1000);
+
+        // بديل تلقائي للصورة
+        const fallbackCanvas = document.createElement('canvas');
+        fallbackCanvas.width = 400; fallbackCanvas.height = 200;
+        const ctx = fallbackCanvas.getContext('2d');
+        ctx.fillStyle = '#0f111a';
         ctx.fillRect(0, 0, 400, 200);
-        ctx.fillStyle = '#4ade80';
-        ctx.font = 'bold 22px Tahoma';
+        ctx.fillStyle = '#38bdf8';
+        ctx.font = 'bold 20px Segoe UI';
         ctx.textAlign = 'center';
-        ctx.fillText('Delta Executor', 200, 105);
+        ctx.fillText('Delta Executor PRO', 200, 105);
         
-        const imgElement = document.getElementById('customImg');
-        imgElement.onerror = function() {
-            this.src = canvas.toDataURL();
+        document.getElementById('toolImg').onerror = function() {
+            this.src = fallbackCanvas.toDataURL();
         };
     </script>
 </body>
